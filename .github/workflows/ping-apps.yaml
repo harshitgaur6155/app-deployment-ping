@@ -13,7 +13,7 @@ on:
   
   schedule:
     - cron: '0 13-23 * * *'  # Runs every hour from 1 PM to 11 PM UTC (8 AM to 6 PM EST)
-    - cron: '0 0-3 * * *'     # Runs every hour from 12 AM to 3 AM UTC (7 PM to 10 PM EST)
+    - cron: '0 0-1 * * *'     # Runs every hour from 12 AM to 3 AM UTC (7 PM to 10 PM EST)
 
   workflow_dispatch:  # Allows manual trigger
     
