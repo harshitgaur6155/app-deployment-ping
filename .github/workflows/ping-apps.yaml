@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Keep Deployed Apps Alive
+
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 13-23 * * *'  # Runs every hour from 1 PM to 11 PM UTC (8 AM to 6 PM EST)
+    - cron: '0 0-3 * * *'     # Runs every hour from 12 AM to 3 AM UTC (7 PM to 10 PM EST)
+    
+
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  ping:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.x"
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Run ping script
+      run: python ping_apps.py
