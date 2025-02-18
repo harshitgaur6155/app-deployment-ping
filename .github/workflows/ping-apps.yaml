@@ -5,6 +5,10 @@ name: Keep Deployed Apps Alive
 
 # Controls when the workflow will run
 on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   schedule:
     - cron: '0 13-23 * * *'  # Runs every hour from 1 PM to 11 PM UTC (8 AM to 6 PM EST)
     - cron: '0 0-7 * * *'     # Runs every hour from 12 AM to 3 AM UTC (7 PM to 10 PM EST)
